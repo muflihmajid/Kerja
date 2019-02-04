@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Backgroundsearch">#98c1d9</color>
+    <color name="Normal">#e0fbfc</color>
+    <color name="Selected">#3d5a80</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorTextatas">#293241</color>
+</resources>
