@@ -1,6 +1,8 @@
 package abadi.sejahtera.pt.ajobthing.Fragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,8 +24,11 @@ import java.util.Arrays;
 import java.util.List;
 
 import abadi.sejahtera.pt.ajobthing.API.APIALL;
+import abadi.sejahtera.pt.ajobthing.Adapter.JobListAdapter;
 import abadi.sejahtera.pt.ajobthing.Data.data;
 import abadi.sejahtera.pt.ajobthing.Data.jobs;
+import abadi.sejahtera.pt.ajobthing.DetailActivity;
+import abadi.sejahtera.pt.ajobthing.MainActivity;
 import abadi.sejahtera.pt.ajobthing.R;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,6 +79,27 @@ public class ForYouFragment extends Fragment {
     }
 
     @Override
+    public void onStart(){
+        super.onStart();
+        EventBus.getDefault().register(ForYouFragment.this);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        EventBus.getDefault().unregister(ForYouFragment.this);
+    }
+
+    @Subscribe
+    public void onEvent(Bundle bundle){
+//        if(bundle.containsKey(JobItemFragment.JOB_ITEM_DATA)){
+//            Intent intent = new Intent(getActivity(), DetailActivity.class);
+//            intent.putExtra(JobItemFragment.JOB_ITEM_DATA, bundle.getParcelable(JobItemFragment.JOB_ITEM_DATA));
+//            startActivity(intent);
+//        }
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -116,7 +144,8 @@ public class ForYouFragment extends Fragment {
                 }
 
                 //displaying the string array into listview
-                listView.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, joblists));
+                JobListAdapter adapter = new JobListAdapter(getContext(), joblist);
+                listView.setAdapter(adapter);
 
             }
 

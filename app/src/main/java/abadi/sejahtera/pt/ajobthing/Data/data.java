@@ -1,8 +1,11 @@
 package abadi.sejahtera.pt.ajobthing.Data;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class data {
+public class data implements Parcelable {
     @SerializedName("job_type")
     private String job_type;
     @SerializedName("country")
@@ -17,7 +20,7 @@ public class data {
     private String requirement;
     @SerializedName("salary")
     private Object salary;
-    @SerializedName("responsbility")
+    @SerializedName("responsibility")
     private String responsibility;
     @SerializedName("share_url")
     private String share_url;
@@ -30,6 +33,33 @@ public class data {
     @SerializedName("job_title")
     private String job_title;
 
+
+    protected data(Parcel in) {
+        job_type = in.readString();
+        country = in.readString();
+        city = in.readString();
+        created_at = in.readString();
+        description = in.readString();
+        requirement = in.readString();
+        responsibility = in.readString();
+        share_url = in.readString();
+        company_name = in.readString();
+        logo = in.readString();
+        id = in.readString();
+        job_title = in.readString();
+    }
+
+    public static final Creator<data> CREATOR = new Creator<data>() {
+        @Override
+        public data createFromParcel(Parcel in) {
+            return new data(in);
+        }
+
+        @Override
+        public data[] newArray(int size) {
+            return new data[size];
+        }
+    };
 
     public String getJob_type ()
     {
@@ -165,5 +195,26 @@ public class data {
     public String toString()
     {
         return "ClassPojo [job_type = "+job_type+", country = "+country+", city = "+city+", created_at = "+created_at+", description = "+description+", requirement = "+requirement+", salary = "+salary+", responsibility = "+responsibility+", share_url = "+share_url+", company_name = "+company_name+", logo = "+logo+", id = "+id+", job_title = "+job_title+"]";
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(job_type);
+        dest.writeString(country);
+        dest.writeString(city);
+        dest.writeString(created_at);
+        dest.writeString(description);
+        dest.writeString(requirement);
+        dest.writeString(responsibility);
+        dest.writeString(share_url);
+        dest.writeString(company_name);
+        dest.writeString(logo);
+        dest.writeString(id);
+        dest.writeString(job_title);
     }
 }

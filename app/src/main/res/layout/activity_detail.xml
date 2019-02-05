@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- header -->
+        <ImageView
+            android:id="@+id/detail_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.05"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"/>
+
+        <TextView
+            android:id="@+id/detail_job_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Title"
+            app:layout_constraintTop_toTopOf="@id/detail_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintLeft_toRightOf="@id/detail_logo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/detail_job_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/detail_job_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintLeft_toLeftOf="@id/detail_job_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            android:text="Company"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/detail_job_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/detail_job_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintLeft_toRightOf="@id/detail_job_company"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            android:text=" - Country"
+            android:textColor="#888" />
+
+        <TextView
+            android:id="@+id/detail_salary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/detail_job_company"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintLeft_toLeftOf="@id/detail_job_company"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            android:text="Salary min - max"
+            android:textColor="#000"/>
+
+        <!-- share social media -->
+        <RelativeLayout
+            android:id="@+id/detail_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/detail_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.1">
+
+            <TextView
+                android:id="@+id/detail_share_apps_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share this"
+                android:textColor="#888"
+                android:layout_centerHorizontal="true"/>
+
+            <RelativeLayout
+                android:id="@+id/detail_share_apps_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/detail_share_apps_text">
+
+                <ImageView
+                    android:id="@+id/detail_share_fb"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/facebook"/>
+
+                <ImageView
+                    android:id="@+id/detail_share_twitter"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/twitter"
+                    android:layout_toRightOf="@id/detail_share_fb"/>
+
+                <ImageView
+                    android:id="@+id/detail_share_whatsapp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/whatsapp"
+                    android:layout_toRightOf="@id/detail_share_twitter"/>
+
+                <ImageView
+                    android:id="@+id/detail_share_link"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/link"
+                    android:layout_toRightOf="@id/detail_share_whatsapp"/>
+
+                <ImageView
+                    android:id="@+id/detail_share_more"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/more"
+                    android:layout_toRightOf="@id/detail_share_link"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <!-- about -->
+        <TextView
+            android:id="@+id/detail_about_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Company"
+            android:textColor="#888"
+            app:layout_constraintTop_toBottomOf="@id/detail_share"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.05"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <TextView
+            android:id="@+id/detail_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum"
+            android:textColor="#000"
+            app:layout_constraintTop_toBottomOf="@id/detail_about_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <!-- responsibility -->
+        <TextView
+            android:id="@+id/detail_responsibility_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What will you do:"
+            android:textColor="#888"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_about"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.05"/>
+
+        <TextView
+            android:id="@+id/detail_responsibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum"
+            android:textColor="#000"
+            app:layout_constraintTop_toBottomOf="@id/detail_responsibility_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0"/>
+
+        <!-- requirements -->
+        <TextView
+            android:id="@+id/detail_requirements_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="Requirements:"
+            android:textColor="#888"
+            app:layout_constraintTop_toBottomOf="@id/detail_responsibility"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.05"/>
+
+        <TextView
+            android:id="@+id/detail_requirements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum"
+            android:textColor="#000"
+            app:layout_constraintTop_toBottomOf="@id/detail_requirements_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
