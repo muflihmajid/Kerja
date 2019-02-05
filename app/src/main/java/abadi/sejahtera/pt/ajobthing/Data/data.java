@@ -2,7 +2,7 @@ package abadi.sejahtera.pt.ajobthing.Data;
 
 import com.google.gson.annotations.SerializedName;
 
-public class jobs {
+public class data {
     @SerializedName("job_type")
     private String job_type;
     @SerializedName("country")
@@ -16,7 +16,7 @@ public class jobs {
     @SerializedName("requirement")
     private String requirement;
     @SerializedName("salary")
-    private Salary salary;
+    private Object salary;
     @SerializedName("responsbility")
     private String responsibility;
     @SerializedName("share_url")
@@ -91,12 +91,12 @@ public class jobs {
         this.requirement = requirement;
     }
 
-    public Salary getSalary ()
+    public Object getSalary ()
     {
         return salary;
     }
 
-    public void setSalary (Salary salary)
+    public void setSalary (Object salary)
     {
         this.salary = salary;
     }

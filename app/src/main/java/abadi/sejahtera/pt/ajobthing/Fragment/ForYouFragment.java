@@ -12,9 +12,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 import java.util.List;
 
 import abadi.sejahtera.pt.ajobthing.API.APIALL;
+import abadi.sejahtera.pt.ajobthing.Data.data;
 import abadi.sejahtera.pt.ajobthing.Data.jobs;
 import abadi.sejahtera.pt.ajobthing.R;
 import retrofit2.Call;
@@ -85,6 +91,7 @@ public class ForYouFragment extends Fragment {
         return v;
     }
 
+
     private void getJob() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIALL.BASE_URL)
@@ -93,27 +100,20 @@ public class ForYouFragment extends Fragment {
 
         APIALL api = retrofit.create(APIALL.class);
 
-        Call<List<jobs>> call = api.getJobs();
-
-        call.enqueue(new Callback<List<jobs>>() {
+        Call<jobs> call = api.data();
+        call.enqueue(new Callback<jobs>() {
             @Override
-            public void onResponse(Call<List<jobs>> call, Response<List<jobs>> response) {
-                List<jobs> joblist = response.body();
-
-
+            public void onResponse(Call<jobs> call, Response<jobs> response) {
+                List<data> joblist = response.body().getData();
+                Log.d("tes", "cekmasuk: " + response.body().getData());
                 //Creating an String array for the ListView
                 String[] joblists = new String[joblist.size()];
-                Log.d("tes", "cekmasuk: " + joblist.size());
-                for (jobs d: joblist)
-                {
-                    Log.d("tes", "cekmasuk: " + d.getJob_title());
-                }
+
                 //looping through all the heroes and inserting the names inside the string array
                 for (int i = 0; i < joblist.size(); i++) {
                     joblists[i] = joblist.get(i).getJob_title();
                     Log.d("tes", "cekmasuk: " + joblist.get(i).getJob_title());
                 }
-                Log.d("tes", "cekmasuk: " + joblists);
 
                 //displaying the string array into listview
                 listView.setAdapter(new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, joblists));
@@ -121,8 +121,9 @@ public class ForYouFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<jobs>> call, Throwable t) {
+            public void onFailure(Call<jobs> call, Throwable t) {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("ERRPR", t.getLocalizedMessage());
             }
         });
     }

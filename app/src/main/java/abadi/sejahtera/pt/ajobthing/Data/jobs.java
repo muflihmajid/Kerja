@@ -1,18 +1,23 @@
 package abadi.sejahtera.pt.ajobthing.Data;
 
-public class dataget {
-    private jobs[] data;
+import com.google.gson.annotations.SerializedName;
 
-    private String header;
+import java.util.List;
 
-    private String status;
+public class jobs {
+    private jobs Jobs;
+    public List<data> data;
 
-    public jobs[] getData ()
+    public String header;
+
+    public String status;
+
+    public List<data> getData ()
     {
         return data;
     }
 
-    public void setData (jobs[] data)
+    public void setData (List<data> data)
     {
         this.data = data;
     }
