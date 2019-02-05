@@ -6,10 +6,14 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import abadi.sejahtera.pt.ajobthing.Adapter.JobListAdapter;
 import abadi.sejahtera.pt.ajobthing.Adapter.SectionsPageAdapter;
 import abadi.sejahtera.pt.ajobthing.Fragment.ForYouFragment;
 import abadi.sejahtera.pt.ajobthing.Fragment.JobItemFragment;
@@ -18,7 +22,7 @@ import abadi.sejahtera.pt.ajobthing.Fragment.SavedFragment;
 public class MainActivity extends AppCompatActivity implements ForYouFragment.OnFragmentInteractionListener,SavedFragment.OnFragmentInteractionListener {
 
     private SectionsPageAdapter mSectionsPageAdapter;
-
+    private EditText search;
     private ViewPager mViewPager;
 
     @Override
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements ForYouFragment.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
-
+        search = (EditText) findViewById(R.id.search_field);
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(mViewPager);
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements ForYouFragment.On
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setTabTextColors(getResources().getColor(R.color.Normal),getResources().getColor(R.color.Selected));
         tabLayout.setupWithViewPager(mViewPager);
+        final JobListAdapter adapter = null;
     }
     private void setupViewPager(ViewPager viewPager) {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());

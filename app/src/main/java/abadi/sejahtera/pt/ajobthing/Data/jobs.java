@@ -1,5 +1,7 @@
 package abadi.sejahtera.pt.ajobthing.Data;
 
+import android.database.sqlite.SQLiteDatabase;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

@@ -6,9 +6,20 @@
     tools:context=".Fragment.ForYouFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ListView
-        android:id="@+id/listViewHeroes"
+    <GridView
+        android:id="@+id/listViewHeroes1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:horizontalSpacing="8dp"
+        android:numColumns="auto_fit"
+        android:padding="8dp"
+        android:verticalSpacing="8dp">
+    </GridView>
+    <!--<ListView-->
+        <!--android:id="@+id/listViewHeroes"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
 
 </FrameLayout>

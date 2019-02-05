@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import java.util.List;
 
 import abadi.sejahtera.pt.ajobthing.API.APIALL;
 import abadi.sejahtera.pt.ajobthing.Adapter.JobListAdapter;
+import abadi.sejahtera.pt.ajobthing.Adapter.connection;
 import abadi.sejahtera.pt.ajobthing.Data.data;
 import abadi.sejahtera.pt.ajobthing.Data.jobs;
 import abadi.sejahtera.pt.ajobthing.DetailActivity;
@@ -53,7 +55,7 @@ public class ForYouFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    ListView listView;
+    GridView listView;
     private OnFragmentInteractionListener mListener;
 
     public ForYouFragment() {
@@ -81,7 +83,14 @@ public class ForYouFragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
-        EventBus.getDefault().register(ForYouFragment.this);
+        if(connection.isConnectedToInternet(getActivity()))
+        {
+            EventBus.getDefault().register(ForYouFragment.this);
+        }
+        else
+        {
+
+        }
     }
 
     @Override
@@ -114,7 +123,7 @@ public class ForYouFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View v = inflater.inflate(R.layout.fragment_for_you, container, false);
-        listView = (ListView) v.findViewById(R.id.listViewHeroes);
+        listView = (GridView) v.findViewById(R.id.listViewHeroes1);
         getJob();
         return v;
     }
